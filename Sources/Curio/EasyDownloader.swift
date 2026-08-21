@@ -11,6 +11,4 @@ struct EasyDownloader: Downloading {
         
         return result.standardOutput ?? ""
     }
-
-    
 }
