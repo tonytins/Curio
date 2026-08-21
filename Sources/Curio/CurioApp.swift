@@ -53,17 +53,18 @@ struct CurioApp: App {
             defer { isRunning = false }
             
             do {
-                let result = try await run(
-                    .name("gallery-dl"),
-                    arguments: Arguments(urls),
-                    output: .string(limit: 1_048_576)
-                )
+                let downloader = makeDownloader()
                 
-                output = result.standardOutput ?? ""
+                output = try await downloader.galleryDl(urls)
             } catch
             {
                 output += "Failed to launcher gallery-dl: \(error)\n"
             }
         }
+    }
+    
+    func makeDownloader() -> some Downloading {
+        // TODO: Add runtime check for macOS 12 and earlier
+        EasyDownloader()
     }
 }
