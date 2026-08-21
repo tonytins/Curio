@@ -11,7 +11,6 @@ This is a simple gallery-dl GUI for macOS, Windows, and Linux made using [SwiftC
 | Platform | Minimum Version |
 | --- | --- |
 | macOS | 13+ |
-| Windows | 10+ |
 | Linux | gtk 3+ |
 
 ## 🔨 Setup
