@@ -6,7 +6,6 @@ struct ContentView: View {
     @State var urlsText = ""
     @State var output = ""
     @State var isRunning = false
-    @State var buttonColor = Color.blue
     
     var body: some View {
         VStack(spacing: 16) {
@@ -15,21 +14,27 @@ struct ContentView: View {
                 .cornerRadius(8)
                 .frame(minHeight: 200)
             
-            Button("Download") {
-                startDownload()
+            switch isRunning {
+            case true:
+                ProgressView()
+                    .frame(width: 100)
+            case false:
+                Button("Download") {
+                    startDownload()
+                }
+                .frame(width: 100)
+                .cornerRadius(5)
+                .background(Color.blue)
+                .foregroundColor(Color.white)
+                .fontWeight(Font.Weight.bold)
             }
-            .frame(width: 100)
-            .cornerRadius(5)
-            .background(buttonColor)
-            .fontWeight(Font.Weight.bold)
-            .disabled(isRunning)
-            
+    
             ScrollView {
                 Text(output)
-                    .background(Color.black)
                     .foregroundColor(.green)
             }
             .frame(minHeight: 200)
+            .background(Color.black)
             .cornerRadius(8)
             
         }.padding()
@@ -47,12 +52,10 @@ struct ContentView: View {
         
         output = ""
         isRunning = true
-        buttonColor = Color.gray
         
         Task {
             defer {
                 isRunning = false
-                buttonColor = Color.blue
             }
             
             do {
