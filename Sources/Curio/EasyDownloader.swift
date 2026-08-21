@@ -4,15 +4,16 @@ import Subprocess
 struct EasyDownloader: Downloading {
     func galleryDl(_ urls: [String]) async throws -> String {
         
-        // This is used in the Linux fallback
-        // for sandboxed platforms like SteamOS
+        // This two are also in the Linux fallback in order
+        // to account for sandboxed environments like SteamOS
         let homebrewPath = "/opt/homebrew/bin"
+        let localBin = "/usr/local/bin"
         
         var platformPaths: [Environment.Key: String] {
 #if os(macOS)
-            ["PATH": ":\(homebrewPath):/usr/local/bin"]
+            ["PATH": ":\(homebrewPath):\(localBin)"]
 #else
-            ["PATH":":\(homebrewPath):/usr/bin:/bin"]
+            ["PATH":":\(homebrewPath):\(localBin):/usr/bin:/bin"]
 #endif
         }
         
