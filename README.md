@@ -14,7 +14,7 @@ This is a simple gallery-dl GUI for macOS, Windows, and Linux made using [SwiftC
 
 ### Prerequisites
 
-You will mint for Swift Bundler. The best way to install it is through Homebrew.
+You will need Swift Bundler to properly run and bundle your app.
 
 1. ``brew install mint``
 2. ``mint install stackotter/swift-bundler@main``
