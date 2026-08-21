@@ -9,10 +9,16 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            TextEditor(text: $urlsText)
-                .padding(4)
-                .cornerRadius(8)
-                .frame(minHeight: 200)
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(.blue, style: StrokeStyle(width: 2))
+                    .fill(Color.gray.opacity(0.05))
+                
+                TextEditor(text: $urlsText)
+                    .padding(4)
+                    .cornerRadius(8)
+                    .frame(minHeight: 200)
+            }
             
             switch isRunning {
             case true:
@@ -29,13 +35,19 @@ struct ContentView: View {
                 .fontWeight(Font.Weight.bold)
             }
     
-            ScrollView {
-                Text(output)
-                    .foregroundColor(.green)
-            }
-            .frame(minHeight: 200)
-            .background(Color.black)
-            .cornerRadius(8)
+            ZStack {
+                
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.black)
+                
+                ScrollView {
+                    Text(output)
+                        .foregroundColor(.green)
+                }
+                .background(Color.black)
+                .cornerRadius(8)
+                
+            }.frame(minHeight: 200)
             
         }.padding()
     }
