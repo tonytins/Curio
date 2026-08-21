@@ -2,6 +2,8 @@ import SwiftCrossUI
 import DefaultBackend
 import Subprocess
 
+let cliProgram = "gallery-dl"
+
 @main
 struct CurioApp: App {
     @State var urlsText = ""
@@ -58,7 +60,7 @@ struct CurioApp: App {
                 output = try await downloader.galleryDl(urls)
             } catch
             {
-                output += "Failed to launcher gallery-dl: \(error)\n"
+                output += "\(error)"
             }
         }
     }

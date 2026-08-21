@@ -1,7 +1,7 @@
 # 🖼️ Curio
 
 <p align="center">
-    <img src="screenshot.png" width="50%" />
+    <img src="screenshot.png" width="70%" />
 </p>
 
 This is a simple gallery-dl GUI for macOS, Windows, and Linux made using [SwiftCrossUI](https://github.com/moreSwift/swift-cross-ui).
@@ -14,7 +14,7 @@ This is a simple gallery-dl GUI for macOS, Windows, and Linux made using [SwiftC
 | Windows | 10+ |
 | Linux | gtk 3+ |
 
-## 🔨 Building
+## 🔨 Setup
 
 ### Prerequisites
 
@@ -27,6 +27,12 @@ You will need Swift Bundler to properly run and bundle your app.
 
 ```
 swift-bundle run
+```
+
+### Bundling
+
+```
+swift-bundle bundle -c Release
 ```
 
 ## ⚖️ License

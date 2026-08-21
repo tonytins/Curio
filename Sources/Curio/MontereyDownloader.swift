@@ -6,7 +6,7 @@ struct MontereyDownloader: Downloading {
         try await withCheckedContinuation { continuation in
             let process = Process()
             process.executableURL = URL(fileURLWithPath: "/usr/bin/env")
-            process.arguments = ["gallery-dl"] + urls
+            process.arguments = [cliProgram] + urls
             
             let pipe = Pipe()
             process.standardOutput = pipe
