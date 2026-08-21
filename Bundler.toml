@@ -4,4 +4,9 @@ format_version = 2
 identifier = 'com.tonytins.Curio'
 product = 'Curio'
 version = '0.1.0'
-icon = "./Appicon.icns"
+icon = "./assets/dev.png"
+
+
+[[apps.Curio.overlays]]
+condition = "platform(macOS)"
+icon = "./assets/dev.icon"
