@@ -6,6 +6,7 @@ struct EasyDownloader: Downloading {
         let result = try await run(
             .name(cliProgram),
             arguments: Arguments(urls),
+            environment: .inherit.updating(["PATH": ":/opt/homebrew/bin:/usr/local/bin"]),
             output: .string(limit: 1_048_576)
         )
         
