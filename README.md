@@ -1,7 +1,7 @@
 # 🖼️ Curio
 
 <p align="center">
-    <img src="screenshot.png" width="90%" />
+    <img src="screenshot.png" width="50%" />
 </p>
 
 This is a simple gallery-dl GUI for macOS, Windows, and Linux made using [SwiftCrossUI](https://github.com/moreSwift/swift-cross-ui).
