@@ -9,6 +9,7 @@ struct CurioApp: App {
     @State var urlsText = ""
     @State var output = ""
     @State var isRunning = false
+    @State var buttonColor = Color.blue
     
     var body: some Scene {
         WindowGroup("Curio") {
@@ -21,21 +22,28 @@ struct CurioApp: App {
                         .padding(4)
                 }
                 
-                Button("Download") {
-                    startDownload()
-                }.disabled(isRunning)
+                HStack {
+                    Button("Download") {
+                        startDownload()
+                    }
+                    .frame(width: 100)
+                    .background(buttonColor)
+                    .fontWeight(Font.Weight.bold)
+                    .disabled(isRunning)
+                    
+                }
                 
                 ScrollView {
                     Text(output)
+                        .background(Color.black)
                         .foregroundColor(.green)
                 }
                 .frame(minHeight: 200)
-                .background(Color.black)
                 .cornerRadius(8)
                 
             }.padding()
         }
-        .defaultSize(width: 500, height: 500)
+        .defaultSize(width: 500, height: 300)
     }
     
     func startDownload() {
@@ -50,11 +58,16 @@ struct CurioApp: App {
         
         output = ""
         isRunning = true
+        buttonColor = Color.gray
         
         Task {
-            defer { isRunning = false }
+            defer {
+                isRunning = false
+                buttonColor = Color.blue
+            }
             
             do {
+                
                 let downloader = makeDownloader()
                 
                 output = try await downloader.galleryDl(urls)
