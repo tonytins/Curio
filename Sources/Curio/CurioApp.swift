@@ -20,7 +20,7 @@ struct CurioApp: App {
                 }
                 
                 Button("Download") {
-                    
+                    startDownload()
                 }.disabled(isRunning)
                 
                 ScrollView {
@@ -39,6 +39,31 @@ struct CurioApp: App {
     func startDownload() {
         guard !isRunning else {
             return
+        }
+        
+        let urls = urlsText
+            .split(whereSeparator: \.isNewline)
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .filter { !$0.isEmpty }
+        
+        output = ""
+        isRunning = true
+        
+        Task {
+            defer { isRunning = false }
+            
+            do {
+                let result = try await run(
+                    .name("gallery-dl"),
+                    arguments: Arguments(urls),
+                    output: .string(limit: 1_048_576)
+                )
+                
+                output = result.standardOutput ?? ""
+            } catch
+            {
+                output += "Failed to launcher gallery-dl: \(error)\n"
+            }
         }
     }
 }
