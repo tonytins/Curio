@@ -1,5 +1,5 @@
-import SwiftCrossUI
 import DefaultBackend
+import SwiftCrossUI
 
 let cliProgram = "gallery-dl"
 
@@ -14,5 +14,4 @@ struct CurioApp: App {
         }
         .defaultSize(width: 500, height: 400)
     }
-    
 }

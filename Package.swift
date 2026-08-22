@@ -8,12 +8,12 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/moreSwift/swift-cross-ui",
-            .upToNextMinor(from: "0.7.0")
+            .upToNextMinor(from: "0.7.0"),
         ),
         .package(
-                url: "https://github.com/swiftlang/swift-subprocess.git",
-                .upToNextMinor(from: "0.4.0")
-            )
+            url: "https://github.com/swiftlang/swift-subprocess.git",
+            .upToNextMinor(from: "0.4.0"),
+        ),
     ],
     targets: [
         .executableTarget(
@@ -21,8 +21,8 @@ let package = Package(
             dependencies: [
                 .product(name: "SwiftCrossUI", package: "swift-cross-ui"),
                 .product(name: "DefaultBackend", package: "swift-cross-ui"),
-                .product(name: "Subprocess", package: "swift-subprocess")
-            ]
+                .product(name: "Subprocess", package: "swift-subprocess"),
+            ],
         ),
-    ]
+    ],
 )
