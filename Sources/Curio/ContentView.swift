@@ -21,6 +21,7 @@ struct ContentView: View {
                     .padding(4)
                     .cornerRadius(8)
                     .frame(minHeight: 200)
+                    .help("One address per line")
             }
 
             Button("Download") {
@@ -34,7 +35,7 @@ struct ContentView: View {
             .foregroundColor(Color.white)
             .fontWeight(Font.Weight.bold)
             .disabled(isRunning)
-            
+
             // Output panel
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
