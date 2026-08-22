@@ -11,6 +11,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 16) {
+            // Input box
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(.blue, style: StrokeStyle(width: 2))
@@ -33,7 +34,8 @@ struct ContentView: View {
             .foregroundColor(Color.white)
             .fontWeight(Font.Weight.bold)
             .disabled(isRunning)
-
+            
+            // Output panel
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(.black)
@@ -48,7 +50,7 @@ struct ContentView: View {
             }.overlay(alignment: .bottomTrailing) {
                 if isRunning || isLoading {
                     ProgressView()
-                        .frame(width: 20)
+                        .padding(10)
                 }
             }
             .frame(minHeight: 100)
